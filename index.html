@@ -652,20 +652,11 @@
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 
   /* ---- typed line ---- */
-  var phrases = [
-    'service meshes by day, sketchbooks by night',
-    'envoy · kubernetes · golang · eBPF',
-    'keeper of Nexus — ShareChat\'s service mesh',
-    'engineering, but make it art'
-  ];
-  var typedEl = document.getElementById('typed'), pi = 0, ci = 0, deleting = false;
+  var phrase = 'envoy · kubernetes · golang · eBPF';
+  var typedEl = document.getElementById('typed'), ci = 0;
   (function tick() {
-    var p = phrases[pi];
-    typedEl.textContent = p.slice(0, ci);
-    if (!deleting && ci < p.length) { ci++; setTimeout(tick, 46); }
-    else if (!deleting) { deleting = true; setTimeout(tick, 2300); }
-    else if (ci > 0) { ci--; setTimeout(tick, 18); }
-    else { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 380); }
+    typedEl.textContent = phrase.slice(0, ci);
+    if (ci < phrase.length) { ci++; setTimeout(tick, 46); }
   })();
 
   /* ---- animated counters ---- */
